@@ -116,11 +116,14 @@ class CipherSoPlugin implements Plugin<Project> {
 
     private static def getNativeArchiveFile(Project project) {
         if (project.rootProject.subprojects.find { it.name == "devso" } != null) {
+            println "from devso"
             return project.rootProject.file("devso").path
         } else {
             def archiveZip = findNativeArchiveFromBuildscript(project)
+            println "from projec"
             if (archiveZip == null) {
                 archiveZip = findNativeArchiveFromBuildscript(project.rootProject)
+                println("from rootProject")
             }
             archiveZip
         }
