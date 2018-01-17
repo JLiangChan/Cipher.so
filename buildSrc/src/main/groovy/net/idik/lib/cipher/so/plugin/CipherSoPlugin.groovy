@@ -131,7 +131,9 @@ class CipherSoPlugin implements Plugin<Project> {
 
     private static def findNativeArchiveFromBuildscript(Project project) {
         def archiveZip = null
+        println("finding configs")
         project.buildscript.configurations.findAll {
+            println("configs: ${it.name}")
             project.gradle.gradleVersion >= '4.0' ? it.isCanBeResolved() : true
         }.each { config ->
             println("configs: ${config.name}")
