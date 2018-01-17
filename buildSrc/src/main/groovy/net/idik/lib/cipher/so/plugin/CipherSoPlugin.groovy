@@ -134,6 +134,7 @@ class CipherSoPlugin implements Plugin<Project> {
         project.buildscript.configurations.findAll {
             project.gradle.gradleVersion >= '4.0' ? it.isCanBeResolved() : true
         }.each { config ->
+            println("configs: ${config.name}")
             File file = config.files.find { it.name.contains("cipher.so") }
             if (file != null) {
                 archiveZip = project.zipTree(file)
