@@ -133,7 +133,7 @@ class CipherSoPlugin implements Plugin<Project> {
         def archiveZip = null
         println("finding configs")
         project.buildscript.configurations.findAll {
-            println("configs: ${it.name}")
+            println("configs: ${it.name}     ${it.artifacts.first().name.toString()}")
             project.gradle.gradleVersion >= '4.0' ? it.isCanBeResolved() : true
         }.each { config ->
             println("configs: ${config.name}")
